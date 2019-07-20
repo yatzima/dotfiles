@@ -1,4 +1,4 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg" align="center" style="width:50%;height:50%;>
 
 # vimconfig
 
