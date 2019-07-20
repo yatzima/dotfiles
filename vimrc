@@ -1,13 +1,13 @@
 @yatzima
-" Inspired from:
-" https://dougblack.io/words/a-good-vimrc.html
+" Inspired by https://dougblack.io/words/a-good-vimrc.html
 
 " UI CONFIG
 set nocompatible           " Don't try to be vi compatible
 set modelines=0            " Security
 set ruler                  " Show file stats
 set bs=2                   " Enables backspace
-set encoding=utf-8         " Encoding
+set encoding=utf-8         " The encoding displayed.
+set fileencoding=utf-8     " The encoding written to file.
 set showcmd                " Show (partial) command in status line
 set colorcolumn=80         " Set colorcolumn
 set cursorline             " highlight current line
@@ -17,7 +17,7 @@ set showmatch              " highlight matching [{()}]
 filetype off               " Helps force plugins to load correctly when it is turned back on below
 filetype plugin on         " For plugins to load correctly
 filetype indent on         " load filetype-specific indent files
-syntax on                  " Turn on syntax highlighting
+syntax enable              " Turn on syntax highlighting
 set mouse=a                " Enables mouse scrolling
 
 " PATHOGEN
