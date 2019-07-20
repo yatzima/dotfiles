@@ -15,7 +15,8 @@ set wildmenu               " visual autocomplete for command menu
 set lazyredraw             " redraw only when we need to.
 set showmatch              " highlight matching [{()}]
 filetype off               " Helps force plugins to load correctly when it is turned back on below
-filetype plugin indent on  " For plugins to load correctly
+filetype plugin on         " For plugins to load correctly
+filetype indent on         " load filetype-specific indent files
 syntax on                  " Turn on syntax highlighting
 set mouse=a                " Enables mouse scrolling
 
@@ -37,11 +38,10 @@ autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
 " TABS AND INDENTATION
-filetype indent on         " load filetype-specific indent files
 set expandtab              " enter spaces when tab is pressed
 set textwidth=120          " break lines when line length increases
 set tabstop=4              " use 4 spaces to represent tab
-set softtabstop=4
+set softtabstop=4          " number of spaces in tab when editing
 set shiftwidth=4           " number of spaces to use for auto indent
 set autoindent             " copy indent from current line when starting a new line
 
