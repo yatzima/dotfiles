@@ -1,7 +1,6 @@
 # vimconfig
 
 My personal vimconfig
-* Pathogen
-* NERDTree
-* unimpaire
-<a href="https://www.w3schools.com">Visit W3Schools</a>
+* <a href="https://github.com/tpope/vim-pathogen">Pathogen</a>
+* <a href="https://github.com/scrooloose/nerdtree">NERDTree</a>
+* <a href="https://github.com/tpope/vim-unimpaired">unimpaired</a>
