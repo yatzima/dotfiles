@@ -48,7 +48,7 @@ set autoindent             " copy indent from current line when starting a new l
 " SEARCH
 set incsearch              " search as characters are entered
 set hlsearch               " highlight matches
-nnoremap <CR> :noh<CR><CR> " This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR> " This unsets the last search pattern register by hitting return
 
 " FOLDING
 set foldenable             " enable folding
