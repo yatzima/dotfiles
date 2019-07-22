@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg" style="width:25%;height:25%;"></div>
+![VIM Logo](https://s3.amazonaws.com/hackdesign/tools/app_images/000/000/051/icon_small/vim-logo-en.png?1391303578)
 
 # My humble .vimrc
 
