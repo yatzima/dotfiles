@@ -5,17 +5,21 @@
 set nocompatible           " Don't try to be vi compatible
 set nomodeline             " Disable modelines
 set ruler                  " Show file stats
-set bs=2                   " Enables backspace
-set encoding=utf-8         " The encoding displayed.
-set fileencoding=utf-8     " The encoding written to file.
+set bs=indent,eol,start    " Enables backspace
+set encoding=utf-8         " The encoding displayed
+set fileencoding=utf-8     " The encoding written to file
 set showcmd                " Show (partial) command in status line
 set colorcolumn=80         " Set colorcolumn
 set cursorline             " Highlight current line
 set wildmenu               " Visual autocomplete for command menu
-set lazyredraw             " Redraw only when we need to.
+set wrap                   " Enable line wrapping
+set lazyredraw             " Redraw only when we need to
 set showmatch              " Highlight matching [{()}]
 set noeb vb t_vb=          " Disables all bell sounds
 set mouse=a                " Enables mouse scrolling
+set title                  " Set the title to the file currently being edited.
+set laststatus=2           " Always display the status bar
+set history=1000           " Increase the undo limit
 filetype plugin indent on  " Enables filetype detection 
 syntax enable              " Turn on syntax highlighting
 
@@ -40,23 +44,25 @@ autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
 " TABS AND INDENTATION
-set expandtab              " Enter spaces when tab is pressed
+set autoindent             " New lines inherit the indentation of previous lines 
+set expandtab              " Convert tabs to spaces
 set textwidth=80           " Break lines when line length increases
-set tabstop=4              " Use 4 spaces to represent tab
+set tabstop=4              " Indent using four spaces 
 set softtabstop=4          " Number of spaces in tab when editing
 set shiftwidth=4           " Number of spaces to use for auto indent
-set autoindent             " Copy indent from current line when starting a new line
 
 " SEARCH
-set incsearch              " Search as characters are entered
-set hlsearch               " Highlight matches
-nnoremap <CR> :noh<CR>|    " This unsets the last search pattern register by hitting return
+set hlsearch               " Enable search highlighting
+set ignorecase             " Ignore case when searching
+set incsearch              " Incremental search that shows partial matches
+set smartcase              " Switch search to case-sensitive when using uppercase 
+nnoremap <CR> :noh<CR>|    " Unsets the last search pattern by hitting return
 
 " FOLDING
 set foldenable             " Enable folding
+set foldmethod=indent      " Fold based on indent level
 set foldlevelstart=10      " Open most folds by default
 set foldnestmax=10         " 10 nested fold max
-set foldmethod=indent      " Fold based on indent level
 
 " MAPPINGS
 imap jj <Esc>|             " Remaps jj to esc in insert mode
