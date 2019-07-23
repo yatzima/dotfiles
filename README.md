@@ -6,3 +6,4 @@ These following plugins are used in my vim configuration:
 * <a href="https://github.com/tpope/vim-pathogen">Pathogen</a>: Managing vim runtimepath
 * <a href="https://github.com/scrooloose/nerdtree">NERDTree</a>: A tree explorer plugin for vim
 * <a href="https://github.com/tpope/vim-unimpaired">unimpaired</a>: Enables some cool mappings
+* <a href="https://github.com/morhetz/gruvbox">Gruvbox</a>: The colorscheme used in this config

@@ -17,7 +17,8 @@ set lazyredraw             " Redraw only when we need to
 set showmatch              " Highlight matching [{()}]
 set noeb vb t_vb=          " Disables all bell sounds
 set mouse=a                " Enables mouse scrolling
-set title                  " Set the title to the file currently being edited.
+set title                  " Set the title to the file currently being edited
+set titleold=              " Restore old title after leaving Vim
 set laststatus=2           " Always display the status bar
 set history=1000           " Increase the undo limit
 filetype plugin indent on  " Enables filetype detection 
