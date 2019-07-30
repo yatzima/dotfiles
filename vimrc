@@ -17,6 +17,7 @@ set lazyredraw             " Redraw only when we need to
 set showmatch              " Highlight matching [{()}]
 set noeb vb t_vb=          " Disables all bell sounds
 set mouse=a                " Enables mouse scrolling
+set clipboard=unnamed      " Enables copy to clipboard
 set title                  " Set the title to the file currently being edited
 set titleold=              " Restore old title after leaving Vim
 set laststatus=2           " Always display the status bar
