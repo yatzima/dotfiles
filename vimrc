@@ -1,5 +1,14 @@
 " @yatzima
-" Inspired by https://dougblack.io/words/a-good-vimrc.html
+
+" VIM-PLUG
+call plug#begin()
+Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-unimpaired'
+call plug#end()
 
 " BASIC CONFIG
 set nocompatible           " Don't try to be vi compatible
@@ -25,15 +34,12 @@ set history=1000           " Increase the undo limit
 filetype plugin indent on  " Enables filetype detection 
 syntax enable              " Turn on syntax highlighting
 
-" PATHOGEN
-execute pathogen#infect()
-
 " NERDTREEE
-let g:NERDTreeWinSize=25   " Sets the width to 25 columns
 autocmd VimEnter * silent NERDTree | wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") 
-    \ && b:NERDTree.isTabTree()) | q | endif
-autocmd BufWinEnter * NERDTreeMirror
+    \ && b:NERDTree.isTabTree()) | q | endif " Closes NERDTree if last buffer
+autocmd BufWinEnter * NERDTree
+let g:NERDTreeWinSize=25   " Sets the width to 25 columns
 
 " COLORSCHEME
 colorscheme gruvbox        " https://github.com/morhetz/gruvbox
@@ -59,6 +65,7 @@ set ignorecase             " Ignore case when searching
 set incsearch              " Incremental search that shows partial matches
 set smartcase              " Switch search to case-sensitive when using uppercase 
 nnoremap <CR> :noh<CR>|    " Unsets the last search pattern by hitting return
+nnoremap * *``|            " Search without jumping
 
 " FOLDING
 set foldenable             " Enable folding
@@ -81,3 +88,5 @@ vmap <Down> ]egv|          " Remaps down arrow key for line switching
 map  <C-l> :tabn<CR>|      " Remaps CTRL + l to switch to next tab
 map  <C-h> :tabp<CR>|      " Remaps CTRL + h to switch to previous tab
 map  <C-t> :tabnew<CR>|    " Remaps CTRL + t to open a new tab
+nmap <C-j> <C-e>|          " Remaps CTRL + j to move up screen one line
+nmap <C-k> <C-y>|          " Remaps CTRL + k to move down screen one line
