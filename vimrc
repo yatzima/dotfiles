@@ -45,6 +45,10 @@ let g:NERDTreeWinSize=25   " Sets the width to 25 columns
 colorscheme gruvbox        " https://github.com/morhetz/gruvbox
 set background=dark        " Sets background to dark
 
+" Conquer of Completion (COC)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " LINE NUMBERS
 set number                 " Displays number line
 set relativenumber         " Displays relative number line
