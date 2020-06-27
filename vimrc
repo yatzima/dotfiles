@@ -1,13 +1,20 @@
 " @yatzima
 
 " VIM-PLUG
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'    
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-unimpaired'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " BASIC CONFIG
@@ -22,7 +29,6 @@ set colorcolumn=80         " Set colorcolumn
 set cursorline             " Highlight current line
 set wildmenu               " Visual autocomplete for command menu
 set wrap                   " Enable line wrapping
-set lazyredraw             " Redraw only when we need to
 set showmatch              " Highlight matching [{()}]
 set noeb vb t_vb=          " Disables all bell sounds
 set mouse=a                " Enables mouse scrolling
@@ -30,12 +36,14 @@ set clipboard=unnamed      " Enables copy to clipboard
 set title                  " Set the title to the file currently being edited
 set titleold=              " Restore old title after leaving Vim
 set laststatus=2           " Always display the status bar
+set lazyredraw             " Redraw only when we need to
+set noshowmode             " Removes show mode
 set history=1000           " Increase the undo limit
 filetype plugin indent on  " Enables filetype detection 
 syntax enable              " Turn on syntax highlighting
 
 " NERDTREEE
-autocmd VimEnter * silent NERDTree | wincmd p
+autocmd VimEnter * NERDTree | wincmd p | call lightline#update()
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") 
     \ && b:NERDTree.isTabTree()) | q | endif " Closes NERDTree if last buffer
 autocmd BufWinEnter * NERDTree
@@ -48,6 +56,7 @@ set background=dark        " Sets background to dark
 " Conquer of Completion (COC)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " LINE NUMBERS
 set number                 " Displays number line
@@ -89,8 +98,8 @@ nmap <Up> [e|              " Remaps up arrow key for line switching
 nmap <Down> ]e|            " Remaps down arrow key for line switching
 vmap <Up> [egv|            " Remaps up arrow key for line switching
 vmap <Down> ]egv|          " Remaps down arrow key for line switching
-map  <C-l> :tabn<CR>|      " Remaps CTRL + l to switch to next tab
-map  <C-h> :tabp<CR>|      " Remaps CTRL + h to switch to previous tab
-map  <C-t> :tabnew<CR>|    " Remaps CTRL + t to open a new tab
-nmap <C-j> <C-e>|          " Remaps CTRL + j to move up screen one line
-nmap <C-k> <C-y>|          " Remaps CTRL + k to move down screen one line
+map  <C-l> :tabn<CR>|      " Remaps CTRL+l to switch to next tab
+map  <C-h> :tabp<CR>|      " Remaps CTRL+h to switch to previous tab
+map  <C-t> :tabnew<CR>|    " Remaps CTRL+t to open a new tab
+nmap <C-j> <C-e>j|         " Remaps CTRL+j to move screen and cursor up one line
+nmap <C-k> <C-y>k|         " Remaps CTRL+k to move screen and cursor down one line
