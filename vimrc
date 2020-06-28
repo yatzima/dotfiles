@@ -11,11 +11,29 @@ call plug#begin()
 Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'morhetz/gruvbox'    
+Plug 'junegunn/seoul256.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'crusoexia/vim-monokai'
 Plug 'itchyny/lightline.vim'
+"Plug 'mengelbrecht/lightline-bufferline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
+
+" COLORSCHEME
+"colorscheme gruvbox        " https://github.com/morhetz/gruvbox
+"colorscheme monokai         " https://github.com/crusoexia/vim-monokai
+"colorscheme seoul256       " https://github.com/junegunn/seoul256.vim
+"let g:seoul256_background = 235
+colorscheme dracula        " https://draculatheme.com/vim 
+let g:dracula_italic = 0
+let g:lightline = {
+      \ 'colorscheme': 'darcula',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ }
 
 " BASIC CONFIG
 set nocompatible           " Don't try to be vi compatible
@@ -39,6 +57,7 @@ set laststatus=2           " Always display the status bar
 set lazyredraw             " Redraw only when we need to
 set noshowmode             " Removes show mode
 set history=1000           " Increase the undo limit
+set background=dark        " Sets background to dark
 filetype plugin indent on  " Enables filetype detection 
 syntax enable              " Turn on syntax highlighting
 
@@ -48,10 +67,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
     \ && b:NERDTree.isTabTree()) | q | endif " Closes NERDTree if last buffer
 autocmd BufWinEnter * NERDTree
 let g:NERDTreeWinSize=25   " Sets the width to 25 columns
-
-" COLORSCHEME
-colorscheme gruvbox        " https://github.com/morhetz/gruvbox
-set background=dark        " Sets background to dark
 
 " Conquer of Completion (COC)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -88,8 +103,8 @@ set foldnestmax=10         " 10 nested fold max
 
 " MAPPINGS
 imap jj <Esc>|             " Remaps jj to esc in insert mode
-nmap j gj|                 " Move veritcally by visual line
-nmap k gk|                 " Move horizontally by visual line
+nmap j gj|                 " Move veritcally by visual line (don't skip wrapped lines)
+nmap k gk|                 " Move horizontally by visual line (don't skip wrapped lines)
 nmap <Left> <<|            " Remaps left arrow key for indentation
 nmap <Right> >>|           " Remaps right arrow key for indentation
 vmap <Left> <gv|           " Remaps left arrow key for indentation
