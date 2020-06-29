@@ -10,30 +10,17 @@ endif
 call plug#begin()
 Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'morhetz/gruvbox'    
-Plug 'junegunn/seoul256.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'crusoexia/vim-monokai'
 Plug 'itchyny/lightline.vim'
-"Plug 'mengelbrecht/lightline-bufferline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
-" COLORSCHEME
-"colorscheme gruvbox        " https://github.com/morhetz/gruvbox
-"colorscheme monokai         " https://github.com/crusoexia/vim-monokai
-"colorscheme seoul256       " https://github.com/junegunn/seoul256.vim
-"let g:seoul256_background = 235
+" COLORSCHEME - DRACULA
 colorscheme dracula        " https://draculatheme.com/vim 
 let g:dracula_italic = 0
-let g:lightline = {
-      \ 'colorscheme': 'darcula',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ }
+let g:lightline = {'colorscheme': 'darcula'}
 
 " BASIC CONFIG
 set nocompatible           " Don't try to be vi compatible
