@@ -105,3 +105,6 @@ map  <C-h> :tabp<CR>|      " Remaps CTRL+h to switch to previous tab
 map  <C-t> :tabnew<CR>|    " Remaps CTRL+t to open a new tab
 nmap <C-j> <C-e>j|         " Remaps CTRL+j to move screen and cursor up one line
 nmap <C-k> <C-y>k|         " Remaps CTRL+k to move screen and cursor down one line
+
+" SOURCE .vimrc 
+autocmd BufWritePost .vimrc source %

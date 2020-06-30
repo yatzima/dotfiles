@@ -4,10 +4,10 @@
 
 These following plugins are used in my vim configuration:
 * <a href="https://github.com/junegunn/vim-plug">vim-plug</a>: A minimalist Vim plugin manager.
-* <a href="https://github.com/tpope/vim-sensible">vim-sensible</a>: a universal set of defaults that (hopefully) everyone can agree on.
-* <a href="https://github.com/scrooloose/nerdtree">NERDTree</a>: A tree explorer plugin for vim
-* <a href="https://draculatheme.com/vim ">Dracula</a>: The colorscheme used in this config
-* <a href="https://github.com/itchyny/lightline.vim">lightline</a>: A light and configurable statusline/tabline plugin for Vim
-* <a href="https://github.com/neoclide/coc.nvim">Conquer of Completion</a>: Autocompletion
-* <a href="https://github.com/tpope/vim-unimpaired">unimpaired</a>: Enables some cool mappings
-* <a href="https://github.com/terryma/vim-multiple-cursors">Multiple Cursors</a>: Enables multiple cursors
+* <a href="https://github.com/tpope/vim-sensible">vim-sensible</a>: A universal set of defaults that (hopefully) everyone can agree on.
+* <a href="https://github.com/scrooloose/nerdtree">NERDTree</a>: A tree explorer plugin for vim.
+* <a href="https://draculatheme.com/vim ">Dracula</a>: The colorscheme used in this config.
+* <a href="https://github.com/itchyny/lightline.vim">lightline</a>: A light and configurable statusline/tabline plugin for Vim.
+* <a href="https://github.com/neoclide/coc.nvim">Conquer of Completion</a>: Simple autocompletion.
+* <a href="https://github.com/tpope/vim-unimpaired">vim-unimpaired</a>: Enables some cool mappings.
+* <a href="https://github.com/terryma/vim-multiple-cursors">vim-multiple-cursors</a>: Enables multiple cursors.
