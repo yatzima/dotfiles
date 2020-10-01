@@ -1,5 +1,8 @@
 " @yatzima
 
+" CHANGE WORKING DIRECTORY
+cd ~
+
 " VIM-PLUG
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -15,6 +18,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " COLORSCHEME - DRACULA
@@ -80,7 +84,7 @@ set ignorecase             " Ignore case when searching
 set incsearch              " Incremental search that shows partial matches
 set smartcase              " Switch search to case-sensitive when using uppercase 
 nnoremap <CR> :noh<CR>|    " Unsets the last search pattern by hitting return
-nnoremap * *``|            " Search without jumping
+nnoremap * *N|            " Search without jumping
 
 " FOLDING
 set foldenable             " Enable folding

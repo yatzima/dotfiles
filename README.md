@@ -11,3 +11,4 @@ These following plugins are used in my vim configuration:
 * <a href="https://github.com/neoclide/coc.nvim">Conquer of Completion</a>: Simple autocompletion.
 * <a href="https://github.com/tpope/vim-unimpaired">vim-unimpaired</a>: Enables some cool mappings.
 * <a href="https://github.com/terryma/vim-multiple-cursors">vim-multiple-cursors</a>: Enables multiple cursors.
+* <a href="https://github.com/ctrlpvim/ctrlp.vim">ctrlp.vim</a>: Full path fuzzy file, buffer, mru, tag finder for Vim.
