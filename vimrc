@@ -1,8 +1,5 @@
 " @yatzima
 
-" CHANGE WORKING DIRECTORY
-cd ~
-
 " VIM-PLUG
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -11,20 +8,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
-
-" COLORSCHEME - DRACULA
-colorscheme dracula        " https://draculatheme.com/vim 
-let g:dracula_italic = 0
-let g:lightline = {'colorscheme': 'darcula'}
 
 " BASIC CONFIG
 set nocompatible           " Don't try to be vi compatible
@@ -52,12 +44,10 @@ set background=dark        " Sets background to dark
 filetype plugin indent on  " Enables filetype detection 
 syntax enable              " Turn on syntax highlighting
 
-" NERDTREEE
-autocmd VimEnter * NERDTree | wincmd p | call lightline#update()
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") 
-    \ && b:NERDTree.isTabTree()) | q | endif " Closes NERDTree if last buffer
-autocmd BufWinEnter * NERDTree
-let g:NERDTreeWinSize=25   " Sets the width to 25 columns
+" COLORSCHEME - DRACULA
+colorscheme dracula        " https://draculatheme.com/vim 
+let g:dracula_italic = 0
+let g:lightline = {'colorscheme': 'darcula'}
 
 " Conquer of Completion (COC)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
