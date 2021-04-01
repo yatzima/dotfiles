@@ -1,5 +1,8 @@
 " @yatzima
 
+" CHANGE DIRECTORY
+cd ~/Documents/Projects
+
 " VIM-PLUG
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -12,8 +15,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-sensible' " Does most of the stuff in BASIC CONFIG
+Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
@@ -41,8 +43,14 @@ set lazyredraw             " Redraw only when we need to
 set noshowmode             " Removes show mode
 set history=1000           " Increase the undo limit
 set background=dark        " Sets background to dark
+set spell spelllang=en_us  " Enables spell checking
 filetype plugin indent on  " Enables filetype detection 
 syntax enable              " Turn on syntax highlighting
+
+" NETRW
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
 
 " COLORSCHEME - DRACULA
 colorscheme dracula        " https://draculatheme.com/vim 
@@ -74,7 +82,7 @@ set ignorecase             " Ignore case when searching
 set incsearch              " Incremental search that shows partial matches
 set smartcase              " Switch search to case-sensitive when using uppercase 
 nnoremap <CR> :noh<CR>|    " Unsets the last search pattern by hitting return
-nnoremap * *N|            " Search without jumping
+nnoremap * *N|             " Search without jumping
 
 " FOLDING
 set foldenable             " Enable folding
@@ -86,6 +94,7 @@ set foldnestmax=10         " 10 nested fold max
 imap jj <Esc>|             " Remaps jj to esc in insert mode
 nmap j gj|                 " Move veritcally by visual line (don't skip wrapped lines)
 nmap k gk|                 " Move horizontally by visual line (don't skip wrapped lines)
+nmap Y y$|                 " Make Y yank till end of line
 nmap <Left> <<|            " Remaps left arrow key for indentation
 nmap <Right> >>|           " Remaps right arrow key for indentation
 vmap <Left> <gv|           " Remaps left arrow key for indentation
@@ -100,5 +109,5 @@ map  <C-t> :tabnew<CR>|    " Remaps CTRL+t to open a new tab
 nmap <C-j> <C-e>j|         " Remaps CTRL+j to move screen and cursor up one line
 nmap <C-k> <C-y>k|         " Remaps CTRL+k to move screen and cursor down one line
 
-" SOURCE .vimrc 
-autocmd BufWritePost .vimrc source %
+" SOURCE init.vim
+autocmd BufWritePost init.vim source %
