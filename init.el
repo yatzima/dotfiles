@@ -28,6 +28,16 @@
 ;; If there is more than one, they won't work right.
 )
 
+;; Enable relative numbers in insert mode
+(defun my/display-set-relative ()
+  (setq display-line-numbers 'relative))     ; or 'visual
+
+(defun my/display-set-absolute ()
+  (setq display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
+(add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
+
 ;; Enable Org
 (require 'org)
 (setq org-src-fontify-natively t)
