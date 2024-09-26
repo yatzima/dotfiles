@@ -1,4 +1,4 @@
-cp init.el ~/.emacs.d/init.el
-cp init.vim ~/.config/nvim/init.vim
-cp tmux.conf ~/.tmux.conf
+cp config/init.el ~/.emacs.d/init.el
+cp config/init.vim ~/.config/nvim/init.vim
+cp config/tmux.conf ~/.tmux.conf
 
