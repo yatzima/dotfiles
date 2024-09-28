@@ -1,3 +1,17 @@
+local set = vim.opt
+
+-- LINE NUMBERS
+set.number = true          -- displays number line
+set.relativenumber = true  -- displays relative number line
+vim.api.nvim_create_autocmd("InsertEnter", { command = [[set norelativenumber]] })
+vim.api.nvim_create_autocmd("InsertLeave", { command = [[set relativenumber]] }) 
+
+-- SEARCH
+set.hlsearch = true        -- enable search highlighting
+set.ignorecase = true      -- ignore case when searching
+set.incsearch = true       -- incremental search that shows partial matches
+set.smartcase = true       -- switch search to case-sensitive when using uppercase 
+
 --[[
 " BASIC CONFIG
 set nocompatible           " Don't try to be vi compatible
@@ -30,23 +44,7 @@ syntax enable              " Turn on syntax highlighting
 let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 25
-
-" COLORSCHEME - DRACULA
-colorscheme dracula        " https://draculatheme.com/vim 
-let g:dracula_italic = 0
-let g:lightline = {'colorscheme': 'darcula'}
-
-" Conquer of Completion (COC)
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" LINE NUMBERS
-set number                 " Displays number line
-set relativenumber         " Displays relative number line
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-
+	
 " TABS AND INDENTATION
 set autoindent             " New lines inherit the indentation of previous lines 
 set expandtab              " Convert tabs to spaces
@@ -54,14 +52,6 @@ set textwidth=80           " Break lines when line length increases
 set tabstop=4              " Indent using four spaces 
 set softtabstop=4          " Number of spaces in tab when editing
 set shiftwidth=4           " Number of spaces to use for auto indent
-
-" SEARCH
-set hlsearch               " Enable search highlighting
-set ignorecase             " Ignore case when searching
-set incsearch              " Incremental search that shows partial matches
-set smartcase              " Switch search to case-sensitive when using uppercase 
-nnoremap <CR> :noh<CR>|    " Unsets the last search pattern by hitting return
-nnoremap * *N|             " Search without jumping
 
 " FOLDING
 set foldenable             " Enable folding

@@ -1,11 +1,17 @@
 -- define local variables
 local map = vim.api.nvim_set_keymap
-
 local options = { noremap = true }
+
 -- maps leader to space allows to make more extensive keybinds
 vim.g.mapleader = " " 
 
+-- search mappings
+map("n", "<CR>", ":noh<CR>|", options) -- nsets the last search pattern by hitting return
+map("n", "*", "*N|", options)          -- Search without jumping
+
+-- general mappings
 map("i", "jj", "<Esc>", options) -- remaps jj to esc in insert mode
+
 --[[
 " MAPPINGS
 nmap j gj|                 " Move veritcally by visual line (don't skip wrapped lines)

@@ -9,8 +9,8 @@ local vim = vim
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-Plug('ctrlpvim/ctrlp.vim')
 Plug('dracula/vim')
+Plug('ctrlpvim/ctrlp.vim')
 Plug('itchyny/lightline.vim')
 Plug('neoclide/coc.nvim')
 Plug('tpope/vim-surround')
@@ -24,3 +24,14 @@ vim.cmd('silent! colorscheme dracula') -- https://draculatheme.com/vim
 --vim.cmd('let g:dracula_italic = 0')
 --vim.cmd('let g:lightline = {"colorscheme": "darcula"'})
 
+--[[
+" COLORSCHEME - DRACULA
+colorscheme dracula        " https://draculatheme.com/vim 
+let g:dracula_italic = 0
+let g:lightline = {'colorscheme': 'darcula'}
+
+" Conquer of Completion (COC)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+--]]
