@@ -6,11 +6,52 @@ local options = { noremap = true }
 vim.g.mapleader = " " 
 
 -- search mappings
-map("n", "<CR>", ":noh<CR>|", options) -- nsets the last search pattern by hitting return
-map("n", "*", "*N|", options)          -- Search without jumping
+map("n", "<CR>", ":noh<CR>|", options)    -- sets the last search pattern by hitting return
+map("n", "*", "*N|", options)             -- search without jumping
 
 -- general mappings
-map("i", "jj", "<Esc>", options) -- remaps jj to esc in insert mode
+map("i", "jj", "<Esc>", options)          -- remaps jj to esc in insert mode
+map("", "<C-t>", ":tabnew<CR>|", options) -- remaps CTRL+t to open a new tab
+
+-- Conquer of Completion (COC)
+local function check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+
+vim.keymap.set("i", "<Tab>",
+    function()
+        if vim.fn['coc#pum#visible']() == 1 then
+            return vim.fn['coc#pum#next'](1)
+        end
+        if check_back_space() then
+            return vim.fn['coc#refresh']()
+        end
+        return "<Tab>"
+    end
+    , opts)
+vim.keymap.set("i", "<S-Tab>", function()
+        if vim.fn['coc#pum#visible']() == 1 then
+            return vim.fn['coc#pum#prev'](1)
+        end
+        return "<S-Tab>"
+end, opts)
+vim.keymap.set("i", "<CR>", function()
+        if vim.fn['coc#pum#visible']() == 1 then
+            return vim.fn['coc#pum#confirm']();
+        end
+       return "\r"
+end, opts)
+-- Conquer of Completion (COC)
+-- map("i", "<expr> <Tab> pumvisible() ? \<C-n>", "\<Tab>", options)
+-- map("i", "<expr> <S-Tab> pumvisible() ? \<C-p>", "\<S-Tab>", options)
+-- map("i", "<expr> <CR> pumvisible() ? \<C-y>", "\<C-g>u\<CR>", options)
+
+-- inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+-- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+-- inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 --[[
 " MAPPINGS
@@ -22,7 +63,4 @@ vmap <Up> [egv|            " Remaps up arrow key for line switching
 vmap <Down> ]egv|          " Remaps down arrow key for line switching
 map  <C-l> :tabn<CR>|      " Remaps CTRL+l to switch to next tab
 map  <C-h> :tabp<CR>|      " Remaps CTRL+h to switch to previous tab
-map  <C-t> :tabnew<CR>|    " Remaps CTRL+t to open a new tab
-nmap <C-j> <C-e>j|         " Remaps CTRL+j to move screen and cursor up one line
-nmap <C-k> <C-y>k|         " Remaps CTRL+k to move screen and cursor down one line
 --]]
