@@ -8,7 +8,7 @@ set.ruler = true           -- Show file stats
 --set.encoding = utf-8         -- The encoding displayed
 --set.fileencoding = utf-8     -- The encoding written to file
 --set.showcmd                " Show (partial) command in status line
-set.colorcolumn = 80       -- Set colorcolumn
+set.colorcolumn = "80"     -- Set colorcolumn
 set.cursorline = true      -- Highlight current line
 --set.wildmenu               " Visual autocomplete for command menu
 set.wrap = true            -- Enable line wrapping
@@ -26,7 +26,6 @@ set.title = true           -- Set the title to the file currently being edited
 --set.spell spelllang=en_us  " Enables spell checking
 --filetype plugin indent on  " Enables filetype detection 
 --syntax enable              " Turn on syntax highlighting
-set.termguicolor = true
 
 -- LINE NUMBERS
 set.number = true          -- Displays number line
