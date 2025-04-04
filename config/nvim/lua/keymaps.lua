@@ -63,4 +63,12 @@ vmap <Up> [egv|            " Remaps up arrow key for line switching
 vmap <Down> ]egv|          " Remaps down arrow key for line switching
 map  <C-l> :tabn<CR>|      " Remaps CTRL+l to switch to next tab
 map  <C-h> :tabp<CR>|      " Remaps CTRL+h to switch to previous tab
+
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 --]]
+
