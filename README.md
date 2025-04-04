@@ -7,7 +7,7 @@ across different machines.
 I try to manage all packages using Nix.
 
 ## Installation
-1. Install Nix Package Manager
+1. Install [Nix Package Manager](https://nixos.org/download/)
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
 ```
