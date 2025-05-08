@@ -21,8 +21,10 @@ nix-shell -p git --run "git clone https://github.com/yatzima/dotfiles.git ~/.dot
 ```bash
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch
 --flake ~/.dotfiles/nix#mini
+```
 
 4. To rebuild using Nix
 ```bash
 darwin-rebuild switch --flake ~/.dotfiles/nix#mini
+```
 ```
