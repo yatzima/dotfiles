@@ -27,4 +27,3 @@ nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch
 ```bash
 darwin-rebuild switch --flake ~/.dotfiles/nix#mini
 ```
-```
