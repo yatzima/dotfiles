@@ -1,2 +1,5 @@
 # Ignore swp-files
 *.swp
+
+# Ignore mac-files
+*.DS_Store
