@@ -7,18 +7,21 @@ cask_args appdir: '/Applications'
 tap 'caskroom/homebrew-cask' || true
 tap 'caskroom/versions' || true
 
+# Essentials
+brew 'neovim'
+brew 'tmux'
 brew 'git'
 brew 'node'
-brew 'neovim'
 brew 'lazygit'
 brew 'gh'
 brew 'ripgrep'
 brew 'fzf'
 brew 'btop'
+brew 'yazi'
 
 # Casks
 cask 'spotify'
-cask 'alacritty'
+cask 'ghostty'
 
 # python
 brew 'python'

@@ -1,3 +1,7 @@
+# Set default editor to NVIM
+export EDITOR=nvim
+
+# Start Tmux
 if [ "$TMUX" = "" ]; then tmux; fi
 
 # Bind shortcut to edit command line
@@ -32,3 +36,14 @@ fzf-full() {
 }
 
 alias fzf=fzf-full
+
+# yazi stuff
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+alias yazi=y
