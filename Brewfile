@@ -18,11 +18,17 @@ brew 'ripgrep'
 brew 'fzf'
 brew 'btop'
 brew 'yazi'
+brew 'npm'
 
-# Casks
+# casks
 cask 'spotify'
 cask 'ghostty'
 
 # python
 brew 'python'
-brew 'python3'
+brew 'uv'
+
+# zsh
+brew 'zsh-autosuggestions'
+brew 'zsh-syntax-highlighting'
+brew 'zsh-completions'
