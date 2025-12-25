@@ -1,5 +1,6 @@
-theme = Kanagawa Wave
+theme = TokyoNight Moon
 maximize = true
+font-family = Osaka-Mono
 font-size = 14
-background-opacity = 0.95
+background-opacity = 0.925
 background-blur = true
