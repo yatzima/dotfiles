@@ -100,18 +100,20 @@ prompt_git_info() {
     [ ! -z "$vcs_info_msg_0_" ] && echo "$ZSH_THEME_GIT_PROMPT_PREFIX%F{white}$vcs_info_msg_0_%f$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-prompt_purity_precmd() {
-    # Pass a line before each prompt
-    print -P ''
-}
+# prompt_purity_precmd() {
+#     # Pass a line before each prompt
+#     print -P ''
+# }
 
 prompt_purification_setup() {
     # Display git branch
 
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd prompt_purity_precmd
+    # autoload -Uz add-zsh-hook
+    # add-zsh-hook precmd prompt_purity_precmd
 
-    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{red}λ%f:"
+    #ZSH_THEME_GIT_PROMPT_PREFIX=" %F{red}λ%f:"
+    #ZSH_THEME_GIT_PROMPT_PREFIX=" %F{red}Git Branch%f: "
+    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{red}%f:"
     ZSH_THEME_GIT_PROMPT_DIRTY=""
     ZSH_THEME_GIT_PROMPT_CLEAN=""
 
