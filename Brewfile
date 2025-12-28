@@ -19,6 +19,8 @@ brew 'fzf'
 brew 'btop'
 brew 'yazi'
 brew 'npm'
+brew 'tree-sitter'  # Needed for nvim-treesitter
+brew 'fd'           # Need this for Snacks explorer
 
 # casks
 cask 'spotify'
