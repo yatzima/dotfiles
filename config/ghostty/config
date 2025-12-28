@@ -1,6 +1,6 @@
 theme = TokyoNight Moon
 maximize = true
-font-family = Osaka-Mono
+font-family = JetBrains Mono 
 font-size = 14
 background-opacity = 0.925
 background-blur = true
