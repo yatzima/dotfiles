@@ -1,82 +1,89 @@
--- define local variables
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
 
--- Better window navigation
-keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
-keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
-keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
-keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+-- Remap <Esc> to CapsLock
+vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+
+-- SEARCH MAPPINGS - See `:help hlsearch`
+vim.keymap.set("n", "*", "*N", { desc = "Highlight and jump back to previous search" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = " Clear highlights on search when pressing <Esc> " })
+vim.keymap.set("n", "<CR>", ":noh<CR>", { desc = "Clear highlights on search when hitting return" })
+
+-- Diagnostic keymaps
+vim.keymap.set("n", "<leader>xq", vim.diagnostic.setqflist, { desc = "Quickfix Diagnostics (All)" })
+vim.keymap.set("n", "<leader>xl", vim.diagnostic.setloclist, { desc = "Location List Diagnostics (Buffer)" })
+
+-- Generic quickfix/location list
+vim.keymap.set("n", "<leader>xQ", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
+vim.keymap.set("n", "<leader>xL", "<cmd>lopen<cr>", { desc = "Open Location List" })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- Disable arrow keys in normal mode
+vim.keymap.set("n", "<left>", '<cmd>echo "Arrow Keys are disabled in Normal Mode!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Arrow Keys are disabled in Normal Mode!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Arrow Keys are disabled in Normal Mode!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Arrow Keys are disabled in Normal Mode!"<CR>')
+
+-- Keybinds to make split navigation easier. - Use CTRL+<hjkl> to switch between windows
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Resize windows with arrows
-keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
-keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
-keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
-keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Decrease window width" })
-
--- Buffer navigation
-keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Prev buffer" })
-keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
-keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-
--- Clear search with <esc>
-keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
--- search mappings
-keymap.set("n", "<CR>", ":noh<CR>|", options)    -- sets the last search pattern by hitting return
-keymap.set("n", "*", "*N|", options)             -- search without jumping
-
--- Better indenting
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
-
--- Move lines up and down
-keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
-keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
-
--- Better paste (don't yank replaced text)
-keymap.set("v", "p", '"_dP', { desc = "Paste without yanking" })
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Decrease window width" })
 
 -- Stay in visual mode when indenting
-keymap.set("v", "<", "<gv", { desc = "Indent left" })
-keymap.set("v", ">", ">gv", { desc = "Indent right" })
-
--- Quick save
-keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
-
--- Quick quit
-keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- Split windows
-keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })
-keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- Tab management
-keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-keymap.set("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+vim.keymap.set("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- Better paste (don't yank replaced text)
+vim.keymap.set("v", "p", '"_dP', { desc = "Paste without yanking" })
 
 -- Better up/down (deals with word wrap)
-keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Center screen when scrolling
-keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
-keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
+-- DOESN'T WORK WELL WITH SNACKS.NVIM
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 
 -- Center screen when searching
-keymap.set("n", "n", "nzzzv", { desc = "Next search result" })
-keymap.set("n", "N", "Nzzzv", { desc = "Previous search result" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result" })
 
--- Lazy
-keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+-- Formatting
+vim.keymap.set({ "n", "x" }, "<leader>cf", function()
+	require("conform").format({ async = true })
+end, { desc = "Format code" })
+
+-- Buffers
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+vim.keymap.set("n", "<leader>bd", function()
+	Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- New file
-keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })

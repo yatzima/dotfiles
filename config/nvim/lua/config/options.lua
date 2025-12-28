@@ -1,94 +1,138 @@
--- Define local variable
-local opt = vim.opt
+-- [[ Setting options ]]
+-- See `:help vim.o`
+-- For more options, you can see `:help option-list`
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
+
+-- Set auto format
+vim.g.autoformat = true
 
 -- Line numbers
-opt.number = true                    -- Show line numbers
-opt.relativenumber = true            -- Show relative line numbers
-opt.numberwidth = 4                  -- Set number column width
+vim.o.number = true -- Make line numbers default
+vim.o.relativenumber = true -- You can also add relative line numbers, to help with jumping.
+vim.o.numberwidth = 4 -- Set number column width
 
--- Tabs & indentation
-opt.tabstop = 2                      -- 2 spaces for tabs
-opt.shiftwidth = 2                   -- 2 spaces for indent width
-opt.expandtab = true                 -- Expand tab to spaces
-opt.autoindent = true                -- Copy indent from current line
-opt.smartindent = true               -- Smart autoindenting on new line
-opt.breakindent = true               -- Enable break indent
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.mouse = "a"
 
--- Line wrapping
-opt.wrap = false                     -- Disable line wrapping
-
--- Search settings
-opt.ignorecase = true                -- Ignore case when searching
-opt.smartcase = true                 -- Mixed case = case-sensitive
-opt.hlsearch = false                 -- Don't highlight search results
-opt.incsearch = true                 -- Show matches as you type
-
--- Cursor line
-opt.cursorline = true                -- Highlight current line
-
--- Appearance
-opt.termguicolors = true             -- True color support
-opt.background = "dark"              -- Dark background
-opt.signcolumn = "yes"               -- Always show sign column
-opt.scrolloff = 8                    -- Min lines to keep above/below cursor
-opt.sidescrolloff = 8                -- Min columns to keep left/right of cursor
-opt.colorcolumn = "80"               -- Show column at 80 chars
-
--- Backspace
-opt.backspace = "indent,eol,start"   -- Allow backspace on indent, eol, start
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false -- Dont show mode since we have a statusline
 
 -- Clipboard
-opt.clipboard:append("unnamedplus")  -- Use system clipboard
+-- Sync clipboard between OS and Neovim.
+-- Schedule the setting after `UiEnter` because it can increase startup-time.
+-- Remove this option if you want your OS clipboard to remain independent.
+-- See `:help 'clipboard'`
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus" -- Use system clipboard
+end)
+
+-- Save undo history
+vim.o.undofile = true
+vim.opt.undolevels = 10000
+
+-- Search settings
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true -- Ignore case when searching
+vim.opt.smartcase = true -- Don't ignore case with capitals
+vim.opt.hlsearch = true -- Highlight search results
+vim.opt.incsearch = true -- Show matches as you type
+
+-- Decrease update time
+vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
+
+-- Decrease mapped sequence wait time
+vim.o.timeoutlen = 300
 
 -- Split windows
-opt.splitright = true                -- Split vertical window to the right
-opt.splitbelow = true                -- Split horizontal window to the bottom
+-- Configure how new splits should be opened
+vim.o.splitright = true -- Put new windows right of current
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitkeep = "screen"
 
--- Swap & backup
-opt.swapfile = false                 -- Don't use swapfile
-opt.backup = false                   -- Don't create backup file
-opt.undofile = true                  -- Enable persistent undo
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+--
+--  Notice listchars is set using `vim.opt` instead of `vim.o`.
+--  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
+--   See `:help lua-options`
+--   and `:help lua-options-guide`
+vim.o.list = true -- Show some invisible characters (tabs...
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
--- Performance
-opt.updatetime = 250                 -- Faster completion (default 4000ms)
-opt.timeoutlen = 300                 -- Time to wait for mapped sequence
+-- Preview substitutions live, as you type!
+-- vim.o.inccommand = "split"
+vim.opt.inccommand = "nosplit" -- preview incremental substitute
 
--- Behaviors
-opt.iskeyword:append("-")            -- Consider dash as part of word
-opt.mouse = "a"                      -- Enable mouse support
-opt.completeopt = "menu,menuone,noselect" -- Completion options
-opt.pumheight = 10                   -- Pop up menu height
+-- Show which line your cursor is on
+vim.opt.cursorline = true -- Enable highlighting of the current line
 
--- Status line
-opt.laststatus = 3                   -- Global statusline
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.o.confirm = true -- Confirm to save changes before exiting modified buffer
 
--- Command line
-opt.cmdheight = 1                    -- Height of command line
-opt.showmode = false                 -- Don't show mode (shown in statusline)
-
--- Folding (if using nvim-ufo or similar)
-opt.foldcolumn = "1"                 -- Show fold column
-opt.foldlevel = 99                   -- Open all folds by default
-opt.foldlevelstart = 99              -- Open all folds by default
-opt.foldenable = true                -- Enable folding
-
--- Whitespace characters
-opt.list = true                      -- Show whitespace characters
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
--- Shorter messages
-opt.shortmess:append("c")            -- Don't show completion messages
-
--- Fill chars (for splits, folds, etc)
-opt.fillchars = {
-  foldopen = "v",
-  foldclose = ">",
-  fold = " ",
-  foldsep = " ",
-  diff = "/",
-  eob = " ",
+vim.opt.autowrite = true -- Enable auto write
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
+vim.opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
 }
+-- Folding
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true -- Enable folding
+vim.opt.foldtext = ""
+-- vim.opt.formatexpr = "v:lua.LazyVim.format.formatexpr()"
+-- vim.opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.jumpoptions = "view"
+vim.opt.laststatus = 3 -- global statusline
+vim.opt.linebreak = true -- Wrap lines at convenient points
+vim.opt.pumblend = 10 -- Popup blend
+vim.opt.pumheight = 10 -- Maximum number of entries in a popup
+vim.opt.ruler = false -- Disable the default ruler
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+vim.opt.shiftround = true -- Round indent
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+vim.opt.smoothscroll = true
+vim.opt.spelllang = { "en" }
+-- vim.opt.statuscolumn = [[%!v:lua.LazyVim.statuscolumn()]]
 
--- Format options
-opt.formatoptions = "jcroqlnt"       -- tcqj by default
+-- Tabs & indentation
+vim.opt.tabstop = 2 -- Number of spaces tabs count for
+vim.opt.shiftwidth = 2 -- Size of an indent
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.autoindent = true -- Copy indent from current line
+vim.opt.smartindent = true -- Insert indents automatically
+vim.opt.breakindent = true -- Enable break indent
+
+vim.opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
+vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.winminwidth = 5 -- Minimum window width
+
+-- Line wrapping
+vim.opt.wrap = false -- Disable line wrap
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
+
+-- Appearance
+vim.opt.termguicolors = true -- True color support
+vim.opt.background = "dark" -- Dark background
+vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.scrolloff = 4 -- Minimal number of screen lines to keep above and below the cursor
+vim.opt.sidescrolloff = 4 -- Columns of context
+vim.opt.colorcolumn = "80" -- Show column at 80 chars
+
+-- Backspace
+vim.opt.backspace = "indent,eol,start" -- Allow backspace on indent, eol, start

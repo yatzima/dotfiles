@@ -1,28 +1,29 @@
--- ~/.config/nvim/init.lua
--- Entry point for Neovim configuration
+--[[
+=====================================================================
+=====================================================================
+=====================================================================
+========                                    .-----.          ========
+========         .----------------------.   | === |          ========
+========         |.-""""""""""""""""""-.|   |-----|          ========
+========         ||   YATZIMA's        ||   | === |          ========
+========         ||   NVIM config      ||   |-----|          ========
+========         ||   based on         ||   | === |          ========
+========         ||   LazyVim and      ||   |-----|          ========
+========         ||   KICKSTART.NVIM   ||   |:::::|          ========
+========         |'-..................-'|   |____o|          ========
+========         `"")----------------(""`   ___________      ========
+========        /::::::::::|  |::::::::::\  \ no mouse \     ========
+========       /:::========|  |==hjkl==:::\  \ required \    ========
+========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
+========                                                     ========
+=====================================================================
+=====================================================================
+--]]
 
--- Set leader keys first (before loading plugins)
+-- Set <space> as the leader key - See `:help mapleader`
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = ";"
 
 -- Load core configuration
-require("config.options")
-require("config.keymaps")
-require("config.autocmds")
-
--- Bootstrap lazy.nvim plugin manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Load plugins
-require("plugins")
+require("config") -- Load config
+require("plugins") -- Load plugins

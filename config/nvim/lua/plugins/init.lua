@@ -1,21 +1,59 @@
--- Plugin manager setup and plugin specifications
-
+-- [[ Configure and install plugins ]]
+--
+--  To check the current status of your plugins, run
+--    :Lazy
+--
+--  You can press `?` in this menu for help. Use `:q` to close the window
+--
+--  To update plugins you can run
+--    :Lazy update
+--
+-- NOTE: Here is where you install your plugins.
 require("lazy").setup({
-  -- Import all plugin specs from lua/plugins/*.lua
-  { import = "plugins.colorscheme" },
-  { import = "plugins.telescope" },
-  { import = "plugins.treesitter" },
-  { import = "plugins.which-key" },
-  { import = "plugins.alpha" },
-  { import = "plugins.snacks" },
-  -- { import = "plugins.lsp" },
+	-- { import = 'plugins' },
+	{ import = "plugins.alpha" },
+	{ import = "plugins.autocompletion" },
+	{ import = "plugins.formatter" },
+	{ import = "plugins.gitsigns" },
+	{ import = "plugins.snacks" },
+	{ import = "plugins.lualine" },
+	{ import = "plugins.aerial" },
+	{ import = "plugins.noice" },
+	{ import = "plugins.colorscheme" },
+	{ import = "plugins.which-key" },
+	{ import = "plugins.telescope" },
+	{ import = "plugins.lsp" },
+	{ import = "plugins.todo-comments" },
+	{ import = "plugins.mini" },
+	{ import = "plugins.treesitter" },
+	{ import = "plugins.neo-tree" },
+	{ import = "plugins.bufferline" },
+	{ import = "plugins.guess-indent" },
+	{ import = "plugins.persistence" },
+	-- require 'kickstart.plugins.debug',
+	-- require 'kickstart.plugins.indent_line',
+	-- require 'kickstart.plugins.lint',
+	-- require 'kickstart.plugins.autopairs',
 }, {
-  -- Lazy.nvim configuration options
-  checker = {
-    enabled = true,  -- Automatically check for plugin updates
-    notify = false,  -- Don't notify on every update available
-  },
-  change_detection = {
-    notify = false,  -- Don't notify when config files change
-  },
+	ui = {
+		-- If you are using a Nerd Font: set icons to an empty table which will use the
+		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+		icons = vim.g.have_nerd_font and {} or {
+			cmd = "⌘",
+			config = "🛠",
+			event = "📅",
+			ft = "📂",
+			init = "⚙",
+			keys = "🗝",
+			plugin = "🔌",
+			runtime = "💻",
+			require = "🌙",
+			source = "📄",
+			start = "🚀",
+			task = "📌",
+			lazy = "💤 ",
+		},
+	},
 })
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
