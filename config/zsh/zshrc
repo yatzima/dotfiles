@@ -122,6 +122,8 @@ x11-clip-wrap-widgets paste $paste_widgets
 source <(fzf --zsh)
 
 # fzf stuff
+bindkey "ç" fzf-cd-widget
+
 fzf-full() {
   fzf --style full \
     --border --padding 1,2 \
