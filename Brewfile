@@ -28,7 +28,9 @@ cask 'ghostty'
 
 # python
 brew 'python'
-brew 'uv'
+brew 'uv'           # Dependency manager
+brew 'isort'        # Sort Python imports automatically
+brew 'black'        # Python code formatter
 
 # zsh
 brew 'zsh-autosuggestions'
