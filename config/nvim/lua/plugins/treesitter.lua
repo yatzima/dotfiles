@@ -17,6 +17,14 @@ return {
 			"query",
 			"vim",
 			"vimdoc",
+			"python",
+			"javascript",
+			"typescript",
+			"tsx",
+			"json",
+			"toml",
+			"yaml",
+			"regex",
 		},
 		-- Autoinstall languages that are not installed
 		auto_install = true,
@@ -28,6 +36,7 @@ return {
 			additional_vim_regex_highlighting = { "ruby" },
 		},
 		indent = { enable = true, disable = { "ruby" } },
+		folds = { enable = true },
 	},
 	-- There are additional nvim-treesitter modules that you can use to interact
 	-- with nvim-treesitter. You should go explore a few and see what interests you:

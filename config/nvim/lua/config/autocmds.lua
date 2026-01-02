@@ -182,3 +182,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
+
+-- Create notification for recording as it's intercepted by other plugins
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	callback = function()
+		vim.notify("Recording macro @" .. vim.fn.reg_recording(), vim.log.levels.INFO)
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	callback = function()
+		vim.notify("Recording stopped", vim.log.levels.INFO)
+	end,
+})

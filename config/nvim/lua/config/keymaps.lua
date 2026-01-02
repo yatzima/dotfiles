@@ -1,4 +1,4 @@
--- [[ Basic Keymaps ]]
+--[[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
 -- Define local variable to save on chars

@@ -16,7 +16,7 @@ return {
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup({
-			-- Example: use 'gz' instead of 's' as prefix
+			-- Example: use 'gs' instead of 's' as prefix
 			mappings = {
 				add = "gsa", -- Add surrounding in Normal and Visual modes
 				delete = "gsd", -- Delete surrounding

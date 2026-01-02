@@ -136,3 +136,7 @@ vim.opt.colorcolumn = "80" -- Show column at 80 chars
 
 -- Backspace
 vim.opt.backspace = "indent,eol,start" -- Allow backspace on indent, eol, start
+
+-- Show cmd (Doesn't work rn)
+vim.opt.showcmd = true -- Shows partial commands in the bottom right
+vim.opt.cmdheight = 5 -- Height of command line (0 hides it completely with noice)

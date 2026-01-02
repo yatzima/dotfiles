@@ -44,6 +44,8 @@ return {
 				},
 			},
 			spec = {
+				-- Add this for Strudel localleader mappings
+				{ "<localleader>", group = "Strudel" },
 				-- Document existing key chains
 				{ "<leader>s", group = "Search" },
 				{ "<leader>t", group = "Toggle" },
