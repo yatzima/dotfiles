@@ -10,3 +10,4 @@ plugins/
 # Ignore zsh stuff
 .zsh_history
 .zprofile
+.zcompdump
