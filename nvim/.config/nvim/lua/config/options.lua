@@ -91,7 +91,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldenable = true -- Enable folding
 vim.opt.foldtext = ""
 -- vim.opt.formatexpr = "v:lua.LazyVim.format.formatexpr()"
--- vim.opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.formatoptions = "jcql" -- tcqj
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.jumpoptions = "view"
@@ -105,7 +105,7 @@ vim.opt.shiftround = true -- Round indent
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.smoothscroll = true
 vim.opt.spelllang = { "en" }
--- vim.opt.statuscolumn = [[%!v:lua.LazyVim.statuscolumn()]]
+vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 
 -- Tabs & indentation
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
