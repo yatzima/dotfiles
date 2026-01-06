@@ -3,3 +3,10 @@
 
 # Ignore mac-files
 *.DS_Store
+
+# Ignore all plugins folders
+plugins/
+
+# Ignore zsh stuff
+.zsh_history
+.zprofile

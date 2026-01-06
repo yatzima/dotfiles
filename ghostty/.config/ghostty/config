@@ -1,4 +1,6 @@
 theme = TokyoNight Moon
+# theme = root_loops
+# theme = dark:aether_amethyst_eclipse, light:aether_amethyst_bliss
 maximize = true
 font-family = JetBrains Mono 
 font-size = 14
