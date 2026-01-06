@@ -4,8 +4,8 @@
 # Ignore mac-files
 *.DS_Store
 
-# Ignore all plugins folders
-plugins/
+# Ignore plugins folder in Tmux
+tmux/.config/tmux/plugins
 
 # Ignore zsh stuff
 .zsh_history
