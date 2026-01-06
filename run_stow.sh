@@ -5,3 +5,4 @@ stow ghostty -t ~
 stow yazi -t ~
 stow zsh -t ~
 stow zshenv -t ~
+stow lazygit -t ~
