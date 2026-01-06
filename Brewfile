@@ -21,6 +21,8 @@ brew 'yazi'
 brew 'npm'
 brew 'tree-sitter'  # Needed for nvim-treesitter
 brew 'fd'           # Need this for Snacks explorer
+brew 'ffmpeg'       # Needed for youtube-downloader
+brew 'stow'         # GNU Stow for managing symlinks
 
 # casks
 cask 'spotify'
