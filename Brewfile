@@ -23,6 +23,7 @@ brew 'tree-sitter'  # Needed for nvim-treesitter
 brew 'fd'           # Need this for Snacks explorer
 brew 'ffmpeg'       # Needed for youtube-downloader
 brew 'stow'         # GNU Stow for managing symlinks
+brew 'w3m'          # Terminal based Web browser
 
 # casks
 cask 'spotify'

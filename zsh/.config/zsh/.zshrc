@@ -159,3 +159,9 @@ function y() {
 
 alias yazi=y
 
+function web_search(){
+    local query
+    query=$(printf '%s' "$*" | sed 's/ /+/g')
+    w3m "https://lite.duckduckgo.com/lite/?q=${query}"
+}
+alias '?'=web_search
