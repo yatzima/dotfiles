@@ -32,9 +32,6 @@ local get_header = function()
 	local weekday_width = vim.fn.strdisplaywidth(weekday_text)
 	local padding = math.floor((logo_width - weekday_width) / 2)
 
-	-- Center the weekday text
-	local centered_weekday = string.rep(" ", padding) .. weekday_text
-
 	return logo .. "\n" .. weekday_text
 end
 
@@ -189,6 +186,7 @@ return {
 				-- wo = { wrap = true } -- Wrap notifications
 			},
 		},
+		zen = { enabled = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
@@ -601,14 +599,14 @@ return {
 		},
 		-- Other
 		{
-			"<leader>z",
+			"<leader>uz",
 			function()
 				Snacks.zen()
 			end,
 			desc = "Toggle Zen Mode",
 		},
 		{
-			"<leader>Z",
+			"<leader>uZ",
 			function()
 				Snacks.zen.zoom()
 			end,
