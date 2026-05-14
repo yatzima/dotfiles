@@ -56,6 +56,7 @@ return {
 				{ "<leader>u", group = "UI" },
 				{ "<leader>w", group = "Window" },
 				{ "<leader>x", group = "Diagnostics" },
+				{ "<leader>l", group = "LSP", icon = { icon = "" } },
 				{ "<leader><tab>", group = "Tabs" },
 				-- Mini.surround mappings
 				{ "gs", group = "Surround" },
