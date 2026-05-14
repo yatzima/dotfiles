@@ -26,7 +26,6 @@ require("lazy").setup({
 	{ import = "plugins.todo-comments" },
 	{ import = "plugins.mini" },
 	{ import = "plugins.treesitter" },
-	{ import = "plugins.neo-tree" },
 	{ import = "plugins.bufferline" },
 	{ import = "plugins.guess-indent" },
 	{ import = "plugins.persistence" },
