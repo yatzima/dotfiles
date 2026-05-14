@@ -199,8 +199,6 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "snacks_picker_list",
 	callback = function()
-		vim.opt_local.ruler = false -- Hide ruler
-		vim.opt_local.laststatus = 0 -- Hide statusline
 		vim.opt_local.number = true
 		vim.opt_local.relativenumber = true
 	end,
