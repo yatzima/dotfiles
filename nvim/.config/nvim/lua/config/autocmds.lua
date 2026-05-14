@@ -190,6 +190,7 @@ vim.api.nvim_create_autocmd("RecordingEnter", {
 	end,
 })
 
+-- Create notfication for stopping recording
 vim.api.nvim_create_autocmd("RecordingLeave", {
 	callback = function()
 		vim.notify("Recording stopped", vim.log.levels.INFO)
