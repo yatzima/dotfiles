@@ -1,3 +1,43 @@
+-- Local function to get ASCII Art
+math.randomseed(vim.loop.hrtime())
+
+local get_header = function()
+	-- Get current weekday
+	local weekday = os.date("%A, %B %d")
+	local weekday_text = " " .. weekday .. " "
+
+	-- ASCII ART
+	local ascii_dir = vim.fn.stdpath("config") .. "/lua/plugins/ascii_art"
+	local logos = vim.fn.glob(ascii_dir .. "/*.txt", false, true)
+	local random_logo = logos[math.random(#logos)]
+
+	-- Try to read logo from file
+	local logo_file = io.open(random_logo, "r")
+	-- local logo_file = io.open(logo_path, "r")
+	-- Default logo
+	local logo = ""
+
+	if logo_file then
+		local file_content = logo_file:read("*all")
+		logo_file:close()
+		if file_content and file_content ~= "" then
+			logo = file_content
+		end
+	end
+
+	local header = vim.split(logo, "\n")
+
+	-- Find the width of the logo (use the first line as reference)
+	local logo_width = vim.fn.strdisplaywidth(header[1])
+	local weekday_width = vim.fn.strdisplaywidth(weekday_text)
+	local padding = math.floor((logo_width - weekday_width) / 2)
+
+	-- Center the weekday text
+	local centered_weekday = string.rep(" ", padding) .. weekday_text
+
+	return logo .. "\n" .. weekday_text
+end
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -5,7 +45,110 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = { enabled = false },
+		dashboard = {
+			enabled = true,
+			width = 60,
+			row = nil, -- dashboard position. nil for center
+			col = nil, -- dashboard position. nil for center
+			pane_gap = 4, -- empty columns between vertical panes
+			autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+			-- These settings are used by some built-in sections
+			preset = {
+				-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+				---@type fun(cmd:string, opts:table)|nil
+				pick = nil,
+				-- Used by the `keys` section to show keymaps.
+				-- Set your custom keymaps here.
+				-- When using a function, the `items` argument are the default keymaps.
+				---@type snacks.dashboard.Item[]
+				keys = {
+					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+					{
+						icon = " ",
+						key = "g",
+						desc = "Find Text",
+						action = ":lua Snacks.dashboard.pick('live_grep')",
+					},
+					{
+						icon = " ",
+						key = "r",
+						desc = "Recent Files",
+						action = ":lua Snacks.dashboard.pick('oldfiles')",
+					},
+					{
+						icon = " ",
+						key = "p",
+						desc = "Projects",
+						action = function()
+							require("telescope.builtin").find_files({
+								cwd = vim.fn.expand("~/Projects"),
+								find_command = {
+									"fd",
+									"--type",
+									"d",
+									"--max-depth",
+									"1",
+									".",
+									vim.fn.expand("~/Projects"),
+								},
+							})
+						end,
+					},
+					{
+						icon = " ",
+						key = "c",
+						desc = "Config",
+						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+					},
+					{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+					{
+						icon = "󰒲 ",
+						key = "L",
+						desc = "Lazy",
+						action = ":Lazy",
+						enabled = package.loaded.lazy ~= nil,
+					},
+					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+				},
+				-- Used by the `header` section
+				-- header = [[ ]],
+				header = get_header(),
+				-- item field formatters
+				formats = {
+					icon = function(item)
+						if item.file and item.icon == "file" or item.icon == "directory" then
+							return Snacks.dashboard.icon(item.file, item.icon)
+						end
+						return { item.icon, width = 2, hl = "icon" }
+					end,
+					footer = { "%s", align = "center" },
+					header = { "%s", align = "center" },
+					file = function(item, ctx)
+						local fname = vim.fn.fnamemodify(item.file, ":~")
+						fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
+						if #fname > ctx.width then
+							local dir = vim.fn.fnamemodify(fname, ":h")
+							local file = vim.fn.fnamemodify(fname, ":t")
+							if dir and file then
+								file = file:sub(-(ctx.width - #dir - 2))
+								fname = dir .. "/…" .. file
+							end
+						end
+						local dir, file = fname:match("^(.*)/(.+)$")
+						return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } }
+							or { { fname, hl = "file" } }
+					end,
+				},
+			},
+			sections = {
+				{ section = "header" },
+				{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+				{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+				{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+				{ section = "startup" },
+			},
+		},
 		explorer = { enabled = true },
 		indent = {
 			enabled = true,
@@ -23,9 +166,21 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			hidden = true,
+			ignored = true,
+			win = {
+				list = {
+					wo = {
+						number = true,
+						relativenumber = true,
+						numberwidth = 2,
+					},
+				},
+			},
+		},
 		quickfile = { enabled = true },
-		scope = { enabled = true },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },

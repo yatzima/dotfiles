@@ -10,8 +10,6 @@
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
-	-- { import = 'plugins' },
-	{ import = "plugins.alpha" },
 	{ import = "plugins.autocompletion" },
 	{ import = "plugins.formatter" },
 	{ import = "plugins.gitsigns" },
@@ -30,10 +28,6 @@ require("lazy").setup({
 	{ import = "plugins.guess-indent" },
 	{ import = "plugins.persistence" },
 	{ import = "plugins.strudel" },
-	-- require 'kickstart.plugins.debug',
-	-- require 'kickstart.plugins.indent_line',
-	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
