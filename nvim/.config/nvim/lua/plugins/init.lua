@@ -13,7 +13,6 @@ require("lazy").setup({
 	{ import = "plugins.autocompletion" },
 	{ import = "plugins.formatter" },
 	{ import = "plugins.snacks" },
-	{ import = "plugins.lualine" },
 	{ import = "plugins.aerial" },
 	{ import = "plugins.noice" },
 	{ import = "plugins.colorscheme" },
