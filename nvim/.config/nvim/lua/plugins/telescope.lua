@@ -85,7 +85,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = 'Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "existing [B]uffers" })
-
+		vim.keymap.set("n", "<leader>so", function()
+			require("telescope.builtin").lsp_document_symbols()
+		end, { desc = "Document symbols" })
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>sz", function()
 			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
