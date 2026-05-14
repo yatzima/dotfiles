@@ -1,5 +1,5 @@
 -- Local function to get ASCII Art
-math.randomseed(vim.loop.hrtime())
+math.randomseed(vim.uv.hrtime())
 
 local get_header = function()
 	-- Get current weekday
@@ -24,13 +24,6 @@ local get_header = function()
 			logo = file_content
 		end
 	end
-
-	local header = vim.split(logo, "\n")
-
-	-- Find the width of the logo (use the first line as reference)
-	local logo_width = vim.fn.strdisplaywidth(header[1])
-	local weekday_width = vim.fn.strdisplaywidth(weekday_text)
-	local padding = math.floor((logo_width - weekday_width) / 2)
 
 	return logo .. "\n" .. weekday_text
 end
@@ -218,13 +211,13 @@ return {
 			end,
 			desc = "Command History",
 		},
-		{
-			"<leader>n",
-			function()
-				Snacks.picker.notifications()
-			end,
-			desc = "Notification History",
-		},
+		-- {
+		-- 	"<leader>n",
+		-- 	function()
+		-- 		Snacks.picker.notifications()
+		-- 	end,
+		-- 	desc = "Notification History",
+		-- },
 		{
 			"<leader>e",
 			function()
@@ -355,13 +348,6 @@ return {
 			desc = "GitHub Pull Requests (all)",
 		},
 		-- Grep
-		{
-			"<leader>sb",
-			function()
-				Snacks.picker.lines()
-			end,
-			desc = "Buffer Lines",
-		},
 		{
 			"<leader>sB",
 			function()
