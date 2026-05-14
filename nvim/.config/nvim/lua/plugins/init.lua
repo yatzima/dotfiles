@@ -20,7 +20,6 @@ require("lazy").setup({
 	{ import = "plugins.which-key" },
 	{ import = "plugins.telescope" },
 	{ import = "plugins.lsp" },
-	{ import = "plugins.todo-comments" },
 	{ import = "plugins.mini" },
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.bufferline" },
