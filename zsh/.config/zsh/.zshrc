@@ -42,6 +42,9 @@ bindkey -M vicmd v edit-command-line
 bindkey -v
 export KEYTIMEOUT=1
 
+# Bind key Ctrl-l to accept zsh-autosuggestions
+bindkey '^L' autosuggest-accept
+
 cursor_mode() {
     # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
     cursor_block='\e[2 q'
