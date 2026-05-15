@@ -159,7 +159,7 @@ return {
 		picker = {
 			enabled = true,
 			hidden = true,
-			ignored = true,
+			ignored = false,
 			win = {
 				list = {
 					wo = {
