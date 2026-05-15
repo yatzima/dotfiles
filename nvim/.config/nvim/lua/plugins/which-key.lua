@@ -59,6 +59,7 @@ return {
 				{ "<leader>l", group = "LSP", icon = { icon = "" } },
 				{ "<leader><tab>", group = "Tabs" },
 				{ "<leader>a", group = "AI" },
+				{ "<leader>h", group = "Gitsigns" },
 				-- Mini.surround mappings
 				{ "gs", group = "Surround" },
 				{ "gsa", desc = "Add surrounding", mode = { "n", "v" } },

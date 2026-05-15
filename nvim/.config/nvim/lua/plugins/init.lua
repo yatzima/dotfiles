@@ -12,6 +12,7 @@
 require("lazy").setup({
 	{ import = "plugins.autocompletion" },
 	{ import = "plugins.formatter" },
+	{ import = "plugins.gitsigns" },
 	{ import = "plugins.snacks" },
 	{ import = "plugins.aerial" },
 	{ import = "plugins.noice" },
