@@ -217,6 +217,16 @@ return {
 				},
 			})
 
+			-- Enable semantic highlighting
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client and client.server_capabilities.semanticTokensProvider then
+						vim.lsp.semantic_tokens.start(args.buf, client.id)
+					end
+				end,
+			})
+
 			-- LSP servers and clients are able to communicate to each other what features they support.
 			--  By default, Neovim doesn't support everything that is in the LSP specification.
 			--  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -235,7 +245,25 @@ return {
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				pyright = {},
+				pyright = {
+					capabilities = {
+						textDocument = {
+							semanticTokens = {
+								multilineTokenSupport = true,
+							},
+						},
+					},
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = "basic", -- or "strict" for more highlighting
+								autoSearchPaths = true,
+								useLibraryCodeForTypes = true,
+								diagnosticMode = "workspace",
+							},
+						},
+					},
+				},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
