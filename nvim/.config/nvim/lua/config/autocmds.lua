@@ -45,12 +45,8 @@ local numbertoggle = vim.api.nvim_create_augroup("numbertoggle", {})
 
 -- Filetypes where relative numbers should not toggle
 local exclude_filetypes = {
-	"alpha",
-	"TelescopePrompt",
-	"TelescopeResults",
 	"help",
 	"notify",
-	"neo-tree",
 	"dashboard",
 	-- Add any other filetypes you want to exclude
 }
@@ -134,8 +130,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"spectre_panel",
 		"startuptime",
 		"tsplayground",
-		"TelescopePrompt",
-		"TelescopeResults",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false

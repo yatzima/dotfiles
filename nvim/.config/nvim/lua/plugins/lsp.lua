@@ -91,16 +91,16 @@ return {
 					map("<leader>la", vim.lsp.buf.code_action, "Goto Code [A]ction", { "n", "x" })
 
 					-- Find references for the word under your cursor.
-					map("<leader>lr", require("telescope.builtin").lsp_references, "Goto [R]eferences")
+					map("<leader>lr", Snacks.picker.lsp_references, "Goto [R]eferences")
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("<leader>li", require("telescope.builtin").lsp_implementations, "Goto [I]mplementation")
+					map("<leader>li", Snacks.picker.lsp_implementations, "Goto [I]mplementation")
 
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
-					map("<leader>ld", require("telescope.builtin").lsp_definitions, "Goto [D]efinition")
+					map("<leader>ld", Snacks.picker.lsp_definitions, "Goto [D]efinition")
 
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
@@ -108,20 +108,16 @@ return {
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>lo", require("telescope.builtin").lsp_document_symbols, "[O]pen Document Symbols")
+					map("<leader>lo", Snacks.picker.lsp_symbols, "[O]pen Document Symbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
-					map(
-						"<leader>lw",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"Open [W]orkspace Symbols"
-					)
+					map("<leader>lw", Snacks.picker.lsp_workspace_symbols, "Open [W]orkspace Symbols")
 
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>lt", require("telescope.builtin").lsp_type_definitions, "Goto [T]ype Definition")
+					map("<leader>lt", Snacks.picker.lsp_type_definitions, "Goto [T]ype Definition")
 
 					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 					---@param client vim.lsp.Client

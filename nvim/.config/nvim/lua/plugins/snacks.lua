@@ -70,20 +70,7 @@ return {
 						icon = " ",
 						key = "p",
 						desc = "Projects",
-						action = function()
-							require("telescope.builtin").find_files({
-								cwd = vim.fn.expand("~/Projects"),
-								find_command = {
-									"fd",
-									"--type",
-									"d",
-									"--max-depth",
-									"1",
-									".",
-									vim.fn.expand("~/Projects"),
-								},
-							})
-						end,
+						action = ":lua Snacks.picker.projects()",
 					},
 					{
 						icon = " ",

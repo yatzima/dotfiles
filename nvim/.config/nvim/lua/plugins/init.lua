@@ -18,7 +18,6 @@ require("lazy").setup({
 	{ import = "plugins.noice" },
 	{ import = "plugins.colorscheme" },
 	{ import = "plugins.which-key" },
-	{ import = "plugins.telescope" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.mini" },
 	{ import = "plugins.treesitter" },
