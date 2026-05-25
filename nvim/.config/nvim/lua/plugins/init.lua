@@ -26,6 +26,7 @@ require("lazy").setup({
 	{ import = "plugins.persistence" },
 	{ import = "plugins.strudel" },
 	{ import = "plugins.oil" },
+	{ import = "plugins.neogit" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
