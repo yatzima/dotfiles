@@ -25,6 +25,7 @@ require("lazy").setup({
 	{ import = "plugins.guess-indent" },
 	{ import = "plugins.persistence" },
 	{ import = "plugins.strudel" },
+	{ import = "plugins.oil" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
