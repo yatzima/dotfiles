@@ -39,6 +39,15 @@ return {
 		indent = { enable = true, disable = { "ruby" } },
 		folds = { enable = true },
 	},
+	config = function(_, opts)
+		require("nvim-treesitter").setup(opts)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(args)
+				pcall(vim.treesitter.start, args.buf)
+			end,
+		})
+	end,
 	-- There are additional nvim-treesitter modules that you can use to interact
 	-- with nvim-treesitter. You should go explore a few and see what interests you:
 	--
