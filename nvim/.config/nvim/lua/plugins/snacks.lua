@@ -147,6 +147,7 @@ return {
 			enabled = true,
 			hidden = true,
 			ignored = false,
+			sources = { files = { hidden = true, ignored = true } },
 			win = {
 				list = {
 					wo = {
@@ -159,7 +160,12 @@ return {
 		},
 		quickfile = { enabled = true },
 		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
+		statuscolumn = {
+			enabled = true,
+			left = { "mark", "sign" },
+			right = { "fold", "git" },
+			git = { patterns = { "GitSign", "MiniDiffSign" } },
+		},
 		words = { enabled = true },
 		styles = {
 			notification = {
