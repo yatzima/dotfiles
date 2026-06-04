@@ -1,6 +1,9 @@
 # Start Tmux
 if [ "$TMUX" = "" ]; then tmux; fi
 
+# Ruby Mise stuff
+eval "$(mise activate zsh)"
+
 # Source Plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

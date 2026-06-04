@@ -24,6 +24,8 @@ brew 'fd'           # Need this for Snacks explorer
 brew 'ffmpeg'       # Needed for youtube-downloader
 brew 'stow'         # GNU Stow for managing symlinks
 brew 'w3m'          # Terminal based Web browser
+brew 'mise'         # Ruby package manager
+brew 'libyaml'      # Needed for Ruby installation maybe
 
 # casks
 cask 'spotify'
