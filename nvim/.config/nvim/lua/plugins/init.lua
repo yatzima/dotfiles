@@ -28,6 +28,8 @@ require("lazy").setup({
 	{ import = "plugins.codecompanion" },
 	{ import = "plugins.oil" },
 	{ import = "plugins.neogit" },
+	{ import = "plugins.nvim-dap" },
+	{ import = "plugins.nvim-dap-ui" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
