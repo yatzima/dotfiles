@@ -27,6 +27,7 @@ return {
 						"prettier", -- JavaScript/TypeScript
 						"black", -- Python formatter
 						"isort", -- Python import sorter
+						"ruby-lsp",
 					},
 				},
 			},
@@ -247,6 +248,35 @@ return {
 								useLibraryCodeForTypes = true,
 								diagnosticMode = "workspace",
 							},
+						},
+					},
+				},
+				ruby_lsp = {
+					settings = {
+						rubyLsp = {
+							-- Enable semantic highlighting
+							enabledFeatures = {
+								"codeActions",
+								"codeLens",
+								"completion",
+								"definition",
+								"diagnostics",
+								"documentHighlights",
+								"documentLink",
+								"documentSymbols",
+								"foldingRanges",
+								"formatting",
+								"hover",
+								"inlayHint",
+								"onTypeFormatting",
+								"references",
+								"rename",
+								"selectionRanges",
+								"semanticHighlighting",
+								"signatureHelp",
+								"workspaceSymbol",
+							},
+							formatter = "auto", -- Uses .rubocop.yml if present
 						},
 					},
 				},
