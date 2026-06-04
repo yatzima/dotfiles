@@ -60,6 +60,7 @@ return {
 				{ "<leader><tab>", group = "Tabs" },
 				{ "<leader>a", group = "AI" },
 				{ "<leader>h", group = "Gitsigns" },
+				{ "<leader>d", group = "Debug" },
 				-- Mini.surround mappings
 				{ "gs", group = "Surround" },
 				{ "gsa", desc = "Add surrounding", mode = { "n", "v" } },
