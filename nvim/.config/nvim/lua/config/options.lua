@@ -42,9 +42,6 @@ vim.opt.incsearch = true -- Show matches as you type
 -- Decrease update time
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
 
--- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
-
 -- Split windows
 -- Configure how new splits should be opened
 vim.o.splitright = true -- Put new windows right of current
@@ -87,7 +84,8 @@ vim.opt.fillchars = {
 }
 -- Folding
 vim.opt.foldlevel = 99
-vim.opt.foldmethod = "indent"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = true -- Enable folding
 vim.opt.foldtext = ""
 -- vim.opt.formatexpr = "v:lua.LazyVim.format.formatexpr()"
