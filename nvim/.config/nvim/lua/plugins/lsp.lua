@@ -21,15 +21,7 @@ return {
 			-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
 			{
 				"mason-org/mason.nvim",
-				opts = {
-					ensure_installed = {
-						"stylua", -- Lua
-						"prettier", -- JavaScript/TypeScript
-						"black", -- Python formatter
-						"isort", -- Python import sorter
-						"ruby-lsp",
-					},
-				},
+				opts = {},
 			},
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -203,13 +195,7 @@ return {
 					source = "if_many",
 					spacing = 2,
 					format = function(diagnostic)
-						local diagnostic_message = {
-							[vim.diagnostic.severity.ERROR] = diagnostic.message,
-							[vim.diagnostic.severity.WARN] = diagnostic.message,
-							[vim.diagnostic.severity.INFO] = diagnostic.message,
-							[vim.diagnostic.severity.HINT] = diagnostic.message,
-						}
-						return diagnostic_message[diagnostic.severity]
+						return diagnostic.message
 					end,
 				},
 			})
@@ -324,6 +310,7 @@ return {
 				"stylua", -- Used to format Lua code
 				"black", -- Python formatter
 				"isort", -- Python import sorter
+				"rubocop", -- Ruby formatted and linter
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

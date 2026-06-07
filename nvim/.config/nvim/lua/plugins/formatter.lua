@@ -25,6 +25,7 @@ return {
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+			ruby = { "rubocop" },
 		},
 		-- Set default options
 		default_format_opts = {
@@ -51,9 +52,9 @@ return {
 			shfmt = {
 				append_args = { "-i", "2" },
 			},
-			prettier = {
-				prepend_args = { "--parser", "babel" },
-			},
+			-- prettier = {
+			-- 	prepend_args = { "--parser", "babel" },
+			-- },
 		},
 	},
 	init = function()
