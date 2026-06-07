@@ -1,20 +1,5 @@
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
---
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		error("Error cloning lazy.nvim:\n" .. out)
-	end
-end
-
----@type vim.Option
-local rtp = vim.opt.rtp
-rtp:prepend(lazypath)
 
 local function augroup(name)
 	return vim.api.nvim_create_augroup("myconfig_" .. name, { clear = true })
@@ -41,7 +26,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Togggle relative number when entering Insert and Command mode
-local numbertoggle = vim.api.nvim_create_augroup("numbertoggle", {})
+local numbertoggle = vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 
 -- Filetypes where relative numbers should not toggle
 local exclude_filetypes = {
@@ -179,19 +164,22 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- Create notification for recording as it's intercepted by other plugins
 vim.api.nvim_create_autocmd("RecordingEnter", {
+	group = augroup("macro_notify"),
 	callback = function()
 		vim.notify("Recording macro @" .. vim.fn.reg_recording(), vim.log.levels.INFO)
 	end,
 })
 
--- Create notfication for stopping recording
+-- Create notification for stopping recording
 vim.api.nvim_create_autocmd("RecordingLeave", {
+	group = augroup("macro_notify_stop"),
 	callback = function()
 		vim.notify("Recording stopped", vim.log.levels.INFO)
 	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	group = augroup("snacks_picker_numbers"),
 	pattern = "snacks_picker_list",
 	callback = function()
 		vim.opt_local.number = true
