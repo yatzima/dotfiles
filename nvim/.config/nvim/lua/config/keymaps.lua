@@ -88,3 +88,22 @@ map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- New file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- Replace any existing mark on the line instead of stacking signs
+map("n", "m", function()
+	local char = vim.fn.getcharstr()
+	local line = vim.fn.line(".")
+	for _, mark in ipairs(vim.fn.getmarklist("%")) do
+		local m = mark.mark:sub(2)
+		if mark.pos[2] == line and m:match("^%a$") then
+			vim.cmd("delmarks " .. m)
+		end
+	end
+	for _, mark in ipairs(vim.fn.getmarklist()) do
+		local m = mark.mark:sub(2)
+		if mark.pos[1] == vim.fn.bufnr("%") and mark.pos[2] == line and m:match("^%a$") then
+			vim.cmd("delmarks " .. m)
+		end
+	end
+	vim.cmd("normal! m" .. char)
+end, { desc = "Set mark, replacing any existing mark on line" })
