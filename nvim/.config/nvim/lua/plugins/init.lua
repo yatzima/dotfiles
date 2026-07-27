@@ -40,7 +40,6 @@ require("lazy").setup({
 	{ import = "plugins.guess-indent" },
 	{ import = "plugins.persistence" },
 	{ import = "plugins.strudel" },
-	{ import = "plugins.codecompanion" },
 	{ import = "plugins.oil" },
 	{ import = "plugins.neogit" },
 	{ import = "plugins.nvim-dap" },
