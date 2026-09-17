@@ -41,6 +41,7 @@ require("lazy").setup({
 	{ import = "plugins.persistence" },
 	{ import = "plugins.strudel" },
 	{ import = "plugins.oil" },
+	{ import = "plugins.diffview" },
 	{ import = "plugins.neogit" },
 	{ import = "plugins.nvim-dap" },
 	{ import = "plugins.nvim-dap-ui" },
